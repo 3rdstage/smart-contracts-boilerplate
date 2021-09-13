@@ -132,7 +132,9 @@ Darwin*) #Bash on macOS
   exit 600
 esac
 
-# Ganache CLI : https://github.com/trufflesuite/ganache-cli#using-ganache-cli
+# Ganache CLI : 
+#     https://github.com/trufflesuite/ganache-cli#using-ganache-cli
+#     https://github.com/trufflesuite/ganache/tree/master#options
 # BIP 32 : https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
 # BIP 39 : https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 #

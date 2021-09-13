@@ -24,7 +24,7 @@ CVS/
 /obj/
 
 # dependencies
-/node_modules/
+/node_modules/*
 /pkg/
 
 # generated artifacts
@@ -67,9 +67,13 @@ config.gypi
 contracts/**/artifacts/
 
 # don't ignore OpenZeppelin contracts
-# !/node_modules/@openzeppelin/
-# /node_modules/@openzeppelin/*
-# !/node_modules/@openzeppelin/contracts/
-# /node_modules/@openzeppelin/contracts/build
-# /node_modules/@openzeppelin/contracts/package.json
-# /node_modules/@openzeppelin/contracts/**/artifacts
+!/node_modules/@openzeppelin
+/node_modules/@openzeppelin/*
+!/node_modules/@openzeppelin/contracts-3
+/node_modules/@openzeppelin/contracts-3/build
+/node_modules/@openzeppelin/contracts-3/package.json
+/node_modules/@openzeppelin/contracts-3/**/artifacts
+!/node_modules/@openzeppelin/contracts-4
+/node_modules/@openzeppelin/contracts-4/build
+/node_modules/@openzeppelin/contracts-4/package.json
+/node_modules/@openzeppelin/contracts-4/**/artifacts
