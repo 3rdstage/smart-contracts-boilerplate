@@ -8,6 +8,7 @@ readonly verbose=1  # 1: true, 0: false - Hard coded yet
 readonly dryrun=0   # 1: true, 0: false - Not Used Yet
 readonly uname=`uname -s`  # OS type
 readonly script_dir=$(cd `dirname $0` && pwd)
+readonly mnemonic_env_var_name='BIP39_MNEMONIC'
 
 declare data_dir
 declare log_dir
@@ -89,25 +90,20 @@ fi
 
 cd "${script_dir}"
 
-readonly eth_ver=`cat ganache-cli.properties | grep -E "^ethereum\.netVersion=" | sed -E 's/ethereum\.netVersion=//'`
+readonly eth_chain_id=`cat ganache-cli.properties | grep -E "^ethereum\.chainId=" | sed -E 's/ethereum\.chainId=//'`
 readonly eth_host=`cat ganache-cli.properties | grep -E "^ethereum\.host=" | sed -E 's/ethereum\.host=//'`
 readonly eth_port=`cat ganache-cli.properties | grep -E "^ethereum\.port=" | sed -E 's/ethereum\.port=//'`
 readonly eth_gas_price=`cat ganache-cli.properties | grep -E "^ethereum\.gasPrice=" | sed -E 's/ethereum\.gasPrice=//'`
 readonly eth_gas_limit=`cat ganache-cli.properties | grep -E "^ethereum\.gasLimit=" | sed -E 's/ethereum\.gasLimit=//'`
 readonly eth_block_time=`cat ganache-cli.properties | grep -E "^ethereum\.blockTime=" | sed -E 's/ethereum\.blockTime=//'`
 readonly eth_hardfork=`cat ganache-cli.properties | grep -E "^ethereum\.hardfork" | sed -E 's/ethereum\.hardfork=//'`
-readonly eth_keys=`cat ganache-cli.properties | grep -E "^ethereum\.keys" | sed -E 's/ethereum\.keys\.[0-9]*=//'`
-
 
 if [ $verbose -ne 0 ]; then
-  echo "Ethereum Network ID : $eth_ver"
-  echo "Ethereum Client Host Address: $eth_host"
-  echo "Ethereum Client TCP Port: $eth_port"
-  echo "Ethereum Gas Limit: $eth_gas_limit"
-  echo "Ethereum Gas Price: $eth_gas_price"
-  echo "Ethereum Private Keys for Accounts: "
-  for key in $eth_keys; do echo "    $key"; done
-  echo "uname: $uname"
+  echo "Chain ID: $eth_chain_id"
+  echo "Host Address: $eth_host"
+  echo "TCP Port: $eth_port"
+  echo "Gas Price: $eth_gas_price"
+  echo "Gas Limit: $eth_gas_limit"
 fi
 
 case $uname in
@@ -141,32 +137,24 @@ esac
 # Options
 #   - gasLimit : The block gas limit (defaults to 0x6691b7)
 #   - gasPrice: The price of gas in wei (defaults to 20000000000)
-
-cmd="ganache-cli --networkId $eth_ver \
+cmd="ganache-cli --networkId $eth_chain_id \
+            --chainId $eth_chain_id \
             --host '$eth_host' \
             --port $eth_port \
             --gasPrice $eth_gas_price \
             --gasLimit $eth_gas_limit"
 
-if [ -n "$eth_keys" ]; then
-  echo ""
-  echo "Private keys for Ethereum accounts are explicitly specified. They will be used."
-  for key in $eth_keys;
-    do cmd="${cmd} --account=\"${key},10000000000000000000000\""
-  done;
+if [ -z "${!mnemonic_env_var_name}" ]; then
+  echo "'${mnemonic_env_var_name}' env. variable is not defined, so implicit default mnemonic will be used."
+  echo "If you want to use user defined mnemonic, define it via '${mnemonic_env_var_name}' env. variable and restart this script."
+  cmd="${cmd} --deterministic"
 else
-  if [ -z "$BIP39_MNEMONIC" ]; then
-    echo "'BIP39_MNEMONIC' env. variable is not defined, so implicit default mnemonic will be used."
-    echo "If you want to use user defined mnemonic, define it via 'BIP39_MNEMONIC' env. variable and restart this script."
-    cmd="${cmd} --deterministic"
-  else
-    echo "'BIP39_MNEMONIC' env. variable is defined, so it will be used."
-    cmd="${cmd} --mnemonic '$BIP39_MNEMONIC'"
-  fi
-  cmd="${cmd} --defaultBalanceEther 10000 --accounts 10 --secure"
+  echo "'${mnemonic_env_var_name}' env. variable is defined, so it will be used."
+  cmd="${cmd} --mnemonic '${!mnemonic_env_var_name}'"
 fi
 
-cmd="${cmd} --unlock 0 --unlock 1 --unlock 2 --unlock 3 --unlock 4 \
+cmd="${cmd} --defaultBalanceEther 10000 --accounts 10 --secure \
+            --unlock 0 --unlock 1 --unlock 2 --unlock 3 --unlock 4 \
             --hardfork $eth_hardfork \
             --blockTime $eth_block_time \
             --db '${data_dir}' >> '${log_dir}'/ganache.log 2>&1"

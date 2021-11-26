@@ -6,23 +6,24 @@ const Web3HttpProvider = require('web3-providers-http');
 const Web3WsProvider = require('web3-providers-ws');
 
 // Read properties for local standalone Ganache CLI node
+const mnemonic = process.env.BIP39_MNEMONIC;
 const fs = require('fs');
 const config = fs.readFileSync('scripts/ganache-cli.properties').toString();
 const ganache = {
   host : config.match(/ethereum.host=.*/g)[0].substring(14),
   port : config.match(/ethereum.port=[0-9]*/g)[0].substring(14),
-  net : config.match(/ethereum.netVersion=[0-9]*/g)[0].substring(20),
+  chain : config.match(/ethereum.chainId=[0-9]*/g)[0].substring(17),
   websocket: false
 }
 
 // https://www.npmjs.com/package/web3-providers-http
-const httpOptions = {
+const defaultHttpOptions = {
   keepAlive: true, timeout: 70000
 }
 
 // https://www.npmjs.com/package/web3-providers-ws
 // https://github.com/theturtle32/WebSocket-Node/blob/v1.0.31/docs/WebSocketClient.md#client-config-options
-const wsOptions = {
+const defaultWsOptions = {
   timeout: 600000,
 
   clientConfig: {
@@ -37,54 +38,10 @@ const wsOptions = {
 }
 
 module.exports = {
-  /**
-   * Networks define how you connect to your ethereum client and let you set the
-   * defaults web3 uses to send transactions. If you don't specify one truffle
-   * will spin up a development blockchain for you on port 9545 when you
-   * run `develop` or `test`. You can ask a truffle command to use a specific
-   * network from the command line, e.g
-   *
-   * $ truffle test --network <network-name>
-   */
 
+  // https://www.trufflesuite.com/docs/truffle/reference/configuration#networks
   networks: {
-    // Useful for testing. The `development` name is special - truffle uses it by default
-    // if it's defined here and no other network is specified at the command line.
-    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
-    // tab if you use this network and you must also set the `host`, `port` and `network_id`
-    // options below to some value.
-    //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
-    // Another network with more advanced options...
-    // advanced: {
-    // port: 8777,             // Custom port
-    // network_id: 1342,       // Custom network
-    // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
-    // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
-    // from: <address>,        // Account to send txs from (default: accounts[0])
-    // websocket: true        // Enable EventEmitter interface for web3 (default: false)
-    // },
-    // Useful for deploying to a public network.
-    // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-    // network_id: 3,       // Ropsten's id
-    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
-    // Useful for private networks
-    // private: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-    // network_id: 2111,   // This network is yours, in the cloud.
-    // production: true    // Treats this network as if it was a public net. (default: false)
-    // }
-    
+
     // https://www.trufflesuite.com/docs/truffle/reference/choosing-an-ethereum-client#truffle-develop
     builtin: {    // truffle built-in client : aka `truffle develop`
       host: '127.0.0.1',
@@ -95,7 +52,7 @@ module.exports = {
     development: {
       host: ganache.host,
       port: ganache.port,
-      network_id: ganache.net,
+      network_id: ganache.chain,
       gas: 3E8,
       gasPrice: 0,
       websockets: ganache.websocket
@@ -103,8 +60,7 @@ module.exports = {
     
     mainnet: {
       provider: () => new HDWalletProvider(
-        process.env.BIP39_MNEMONIC, 
-        "https://mainnet.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
+        mnemonic, "https://mainnet.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
       network_id: '1'
     },
 
@@ -114,8 +70,7 @@ module.exports = {
     //Faucet : https://faucet.ropsten.be/
     ropsten: {
       provider: () => new HDWalletProvider(
-        process.env.BIP39_MNEMONIC, 
-        "https://ropsten.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
+        mnemonic, "https://ropsten.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
       network_id: '3',
       gas: 7E6,
       gasPrice: 1E10
@@ -127,9 +82,25 @@ module.exports = {
     //Avg. Block Time : 15s
     rinkeby: {
       provider: () => new HDWalletProvider(
-        process.env.BIP39_MNEMONIC, 
-        "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
+        mnemonic, "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
       network_id: '4',
+    },
+
+    rinkeby_ws: {
+      provider: () => {
+        // Monkey patch to support `web3.eth.subscribe()` function
+        // https://github.com/trufflesuite/truffle/issues/2567
+        const wsProvider = new Web3WsProvider(
+          "wss://rinkeby.infura.io/ws/v3/" + process.env.INFURA_PROJECT_ID, defaultWsOptions);
+        HDWalletProvider.prototype.on = wsProvider.on.bind(wsProvider);
+        return new HDWalletProvider({
+          mnemonic: mnemonic,
+          providerOrUrl: wsProvider,
+          pollingInterval: 10000
+        });
+      },
+      network_id: '4', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
+      websockets: true, 
     },
 
     //Kovan : PoA
@@ -140,8 +111,8 @@ module.exports = {
     kovan: {
       provider: () => 
         new HDWalletProvider({
-          mnemonic: process.env.BIP39_MNEMONIC,
-          providerOrUrl: new Web3HttpProvider("https://kovan.infura.io/v3/" + process.env.INFURA_PROJECT_ID, httpOptions),
+          mnemonic: mnemonic,
+          providerOrUrl: new Web3HttpProvider("https://kovan.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultWsOptions),
           pollingInterval: 2000
         }),
       network_id: '42', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
@@ -150,16 +121,37 @@ module.exports = {
     },
 
     kovan_ws: {
-      provider: () => 
-        new HDWalletProvider({
-          mnemonic: process.env.BIP39_MNEMONIC,
-          providerOrUrl: new Web3WsProvider("wss://kovan.infura.io/ws/v3/" + process.env.INFURA_PROJECT_ID, wsOptions),
+      provider: () => {
+        // Monkey patch to support `web3.eth.subscribe()` function
+        // https://github.com/trufflesuite/truffle/issues/2567
+        const wsProvider = new Web3WsProvider(
+          "wss://kovan.infura.io/ws/v3/" + process.env.INFURA_PROJECT_ID, defaultWsOptions);
+        HDWalletProvider.prototype.on = wsProvider.on.bind(wsProvider);
+        return new HDWalletProvider({
+          mnemonic: mnemonic,
+          providerOrUrl: wsProvider,
           pollingInterval: 2000
-        }),
+        });
+      },
       network_id: '42', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
       websockets: true, 
       //gas: 7E6,
       //gasPrice: 5E10
+    },
+    
+    // Goerli : PoA
+    // GitHub : https://github.com/goerli/testnet
+    // Explorer : https://goerli.etherscan.io/
+    // Faucet : 
+    // Avg. Block Time : 15s
+    goerli: {
+      provider: () => new HDWalletProvider({
+        mnemonic: mnemonic,
+        providerOrUrl: new Web3HttpProvider(
+          "https://goerli.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
+        pollingInterval: 15000
+      }),
+      network_id: '5'
     }
   },
 
@@ -173,7 +165,7 @@ module.exports = {
   },
 
   // Configure your compilers
-  // http://truffleframework.com/docs/advanced/configuration
+  // https://www.trufflesuite.com/docs/truffle/reference/configuration#compiler-configuration
   // https://solidity.readthedocs.io/en/v0.6.6/using-the-compiler.html#target-options
   compilers: {
     solc: {
