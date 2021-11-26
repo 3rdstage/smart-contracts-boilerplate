@@ -24,7 +24,7 @@ $ cd my-smart-contracts
 $ vi .project
 ~~~
 
-### Required softwares
+#### Required softwares
 
 Install `Truffle`, `Ganache CLI` and `remixd` into ***global scope*** if not installed yet.
 
@@ -57,8 +57,7 @@ $ npm view @remix-project/remixd version
 $ npm install -g @remix-project/remixd
 ~~~
 
-
-#### Environment variable
+#### Environment variables
 
 To use this project, you have to provide BIP32 mnemonic and Infura project ID as environment variables.
 
@@ -72,7 +71,7 @@ To use this project, you have to provide BIP32 mnemonic and Infura project ID as
 * If you need Infura project ID but don't have yours, sign up for [Infura](https://infura.io/) and follow the next article.
     * [Getting Started With Infura](https://blog.infura.io/getting-started-with-infura-28e41844cc89/)
 
-```
+~~~
 # address : 0xb009cd53957c0D991CAbE184e884258a1D7b77D9
 ethereum.keys.0=0x052fdb8f5af8f2e4ef5c935bcacf1338ad0d8abe30f45f0137943ac72f1bba1e
 # address : 0x05f9301Be8F3C133fC474F8d538fD732CaCa274c
@@ -93,30 +92,31 @@ ethereum.keys.7=0x964a24a416c75097cfbc3d96ba06dadd8f6c8c7503fa5e95dd738241f4f01c
 ethereum.keys.8=0xa5b0a313105744bc0e45373034bed686b0c95fcb24f02ec70fb126d516561cd0
 # address : 0x9Ebe0ec1f5f2c0f6BA7d9f7187d6f5c540F2b5fa
 ethereum.keys.9=0xb38ca892d2778a5edfb03141922becca5074497825335bbbcf2780fa114f0cf4
-```
+~~~
 
 ----
 
 ### Using Ganache CLI
 
-
-
+----
 
 ### Using Truffle
 
-
-
 To list configured networks, read `truffle-config.js` or execute `truffle networks` command.
 
-````bash
+~~~bash
 
 $ truffle networks
 
-````
+~~~
+
+----
 
 ### Using Remix
 
 
+----
 
 ### References
 
+----
