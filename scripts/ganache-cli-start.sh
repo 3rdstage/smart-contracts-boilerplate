@@ -154,7 +154,7 @@ else
 fi
 
 cmd="${cmd} --defaultBalanceEther 10000 --accounts 10 --secure \
-            --unlock 0 --unlock 1 --unlock 2 --unlock 3 --unlock 4 \
+            --unlock 0 --unlock 1 --unlock 2 --unlock 3 --unlock 4 --unlock 5 --unlock 6 --unlock 7 --unlock 8 --unlock 9 \
             --hardfork $eth_hardfork \
             --blockTime $eth_block_time \
             --db '${data_dir}' >> '${log_dir}'/ganache.log 2>&1"
