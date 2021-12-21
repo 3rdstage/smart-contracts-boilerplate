@@ -105,4 +105,13 @@ Contract sources are recommanded to follow "OpenZeppelin Contracts Design Guidel
 
 ### References
 
+| Category | Reference | Remarks |
+| -------- | --------- | ------- |
+| Solidity | [Solidity documentation (latest)](https://docs.soliditylang.org/en/latest/) |   |
+|          | [OpenZeppelin Contracts v3.x documentation](https://docs.openzeppelin.com/contracts/3.x/) |   |
+|          | [OpenZeppelin Contracts v4.x documentation](https://docs.openzeppelin.com/contracts/4.x/) |   |
+| Web3     | [Web3.js v1.5.2 documentation](https://web3js.readthedocs.io/en/v1.5.2/) |   |
+|         
+
+
 ----
