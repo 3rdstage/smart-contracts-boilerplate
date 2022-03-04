@@ -88,7 +88,6 @@ module.exports = {
     //Faucet : https://faucet.rinkeby.io/
     //Avg. Block Time : 15s
     rinkeby: {
-      
       provider: () =>
         new HDWalletProvider({
           chainId: 4,
@@ -98,7 +97,6 @@ module.exports = {
                            defaultWsOptions),
           pollingInterval: 20000
         }),
-      
       network_id: '4',
       skipDryRun: true
     },
