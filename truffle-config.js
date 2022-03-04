@@ -93,8 +93,7 @@ module.exports = {
           chainId: 4,
           mnemonic: mnemonic,
           providerOrUrl: new Web3HttpProvider(
-                           "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID,
-                           defaultWsOptions),
+            "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
           pollingInterval: 20000
         }),
       network_id: '4',
@@ -128,7 +127,8 @@ module.exports = {
       provider: () =>
         new HDWalletProvider({
           mnemonic: mnemonic,
-          providerOrUrl: new Web3HttpProvider("https://kovan.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultWsOptions),
+          providerOrUrl: new Web3HttpProvider(
+            "https://kovan.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
           pollingInterval: 2000
         }),
       network_id: '42', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
