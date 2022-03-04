@@ -40,6 +40,10 @@ const defaultWsOptions = {
 module.exports = {
 
   // https://www.trufflesuite.com/docs/truffle/reference/configuration#networks
+  // https://github.com/trufflesuite/truffle/tree/develop/packages/hdwallet-provider#general-usage
+  // https://www.npmjs.com/package/web3-providers-http
+  // https://www.npmjs.com/package/web3-providers-ws
+  // https://web3js.readthedocs.io/en/v1.7.0/web3.html#providers
   networks: {
 
     // https://www.trufflesuite.com/docs/truffle/reference/choosing-an-ethereum-client#truffle-develop
@@ -84,8 +88,17 @@ module.exports = {
     //Faucet : https://faucet.rinkeby.io/
     //Avg. Block Time : 15s
     rinkeby: {
-      provider: () => new HDWalletProvider(
-        mnemonic, "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
+      
+      provider: () =>
+        new HDWalletProvider({
+          chainId: 4,
+          mnemonic: mnemonic,
+          providerOrUrl: new Web3HttpProvider(
+                           "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID,
+                           defaultWsOptions),
+          pollingInterval: 20000
+        }),
+      
       network_id: '4',
       skipDryRun: true
     },
