@@ -40,6 +40,10 @@ const defaultWsOptions = {
 module.exports = {
 
   // https://www.trufflesuite.com/docs/truffle/reference/configuration#networks
+  // https://github.com/trufflesuite/truffle/tree/develop/packages/hdwallet-provider#general-usage
+  // https://www.npmjs.com/package/web3-providers-http
+  // https://www.npmjs.com/package/web3-providers-ws
+  // https://web3js.readthedocs.io/en/v1.7.0/web3.html#providers
   networks: {
 
     // https://www.trufflesuite.com/docs/truffle/reference/choosing-an-ethereum-client#truffle-develop
@@ -55,13 +59,15 @@ module.exports = {
       network_id: ganache.chain,
       gas: 3E8,
       gasPrice: 0,
-      websockets: ganache.websocket
+      websockets: ganache.websocket,
+      skipDryRun: true
     },
     
     mainnet: {
       provider: () => new HDWalletProvider(
         mnemonic, "https://mainnet.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
-      network_id: '1'
+      network_id: '1',
+      skipDryRun: true
     },
 
     //Ropsten : PoW
@@ -73,7 +79,8 @@ module.exports = {
         mnemonic, "https://ropsten.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
       network_id: '3',
       gas: 7E6,
-      gasPrice: 1E10
+      gasPrice: 1E10,
+      skipDryRun: true
     },
 
     //Rinkeby : PoA
@@ -81,9 +88,16 @@ module.exports = {
     //Faucet : https://faucet.rinkeby.io/
     //Avg. Block Time : 15s
     rinkeby: {
-      provider: () => new HDWalletProvider(
-        mnemonic, "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
+      provider: () =>
+        new HDWalletProvider({
+          chainId: 4,
+          mnemonic: mnemonic,
+          providerOrUrl: new Web3HttpProvider(
+            "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
+          pollingInterval: 20000
+        }),
       network_id: '4',
+      skipDryRun: true
     },
 
     rinkeby_ws: {
@@ -100,7 +114,8 @@ module.exports = {
         });
       },
       network_id: '4', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
-      websockets: true, 
+      websockets: true,
+      skipDryRun: true
     },
 
     //Kovan : PoA
@@ -109,15 +124,17 @@ module.exports = {
     //Faucet : https://github.com/kovan-testnet/faucet
     //Avg. Block Time : 4s
     kovan: {
-      provider: () => 
+      provider: () =>
         new HDWalletProvider({
           mnemonic: mnemonic,
-          providerOrUrl: new Web3HttpProvider("https://kovan.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultWsOptions),
+          providerOrUrl: new Web3HttpProvider(
+            "https://kovan.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
           pollingInterval: 2000
         }),
       network_id: '42', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
       //gas: 7E6,
-      //gasPrice: 5E10
+      //gasPrice: 5E10,
+      skipDryRun: true
     },
 
     kovan_ws: {
@@ -134,15 +151,16 @@ module.exports = {
         });
       },
       network_id: '42', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
-      websockets: true, 
       //gas: 7E6,
-      //gasPrice: 5E10
+      //gasPrice: 5E10,
+      websockets: true,
+      skipDryRun: true
     },
     
     // Goerli : PoA
     // GitHub : https://github.com/goerli/testnet
     // Explorer : https://goerli.etherscan.io/
-    // Faucet : 
+    // Faucet :
     // Avg. Block Time : 15s
     goerli: {
       provider: () => new HDWalletProvider({
@@ -151,7 +169,8 @@ module.exports = {
           "https://goerli.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
         pollingInterval: 15000
       }),
-      network_id: '5'
+      network_id: '5',
+      skipDryRun: true
     }
   },
 
@@ -188,7 +207,7 @@ module.exports = {
   // NOTE: It is not possible to migrate your contracts to truffle DB and you should
   // make a backup of your artifacts to a safe location before enabling this feature.
   //
-  // After you backed up your artifacts you can utilize db by running migrate as follows: 
+  // After you backed up your artifacts you can utilize db by running migrate as follows:
   // $ truffle migrate --reset --compile-all
   //
   // db: {
