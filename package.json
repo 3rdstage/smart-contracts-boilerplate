@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@openzeppelin/contracts-3": "npm:@openzeppelin/contracts@3.4.2",
-    "@openzeppelin/contracts-4": "npm:@openzeppelin/contracts@4.3.0",
+    "@openzeppelin/contracts-4": "npm:@openzeppelin/contracts@4.5.0",
     "@remix-project/remixd": "^0.5.1",
     "solc": "^0.8.7",
     "web3": "^1.6.1"
@@ -44,6 +44,7 @@
   },
   "scripts": {
     "//": [
+      "Recommanded Truffle version is 5.3.14 and not more.",
       "https://docs.npmjs.com/files/package.json",
       "https://github.com/OpenZeppelin/zeppelin-solidity#getting-started"
     ],
