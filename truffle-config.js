@@ -94,7 +94,7 @@ module.exports = {
           mnemonic: mnemonic,
           providerOrUrl: new Web3HttpProvider(
             "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID, defaultHttpOptions),
-          pollingInterval: 20000
+          pollingInterval: 5500
         }),
       network_id: '4',
       skipDryRun: true
@@ -110,7 +110,7 @@ module.exports = {
         return new HDWalletProvider({
           mnemonic: mnemonic,
           providerOrUrl: wsProvider,
-          pollingInterval: 10000
+          pollingInterval: 5500
         });
       },
       network_id: '4', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
