@@ -24,8 +24,7 @@
   "dependencies": {
     "@openzeppelin/contracts-3": "npm:@openzeppelin/contracts@3.4.2",
     "@openzeppelin/contracts-4": "npm:@openzeppelin/contracts@4.5.0",
-    "@remix-project/remixd": "~0.5.1",
-    "solc": "~0.8.7",
+    "@remix-project/remixd": "^0.5.1",
     "web3": "~1.5.1"
   },
   "devDependencies": {
@@ -40,7 +39,7 @@
     "bip39": "~3.0.4"
   },
   "engines": {
-    "node": ">=12.0"
+    "node": ">=10.0"
   },
   "scripts": {
     "//": [
