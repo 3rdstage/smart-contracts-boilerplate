@@ -254,5 +254,21 @@ Contract sources are recommanded to follow "OpenZeppelin Contracts Design Guidel
 |          | [OpenZeppelin Contracts v3.x documentation](https://docs.openzeppelin.com/contracts/3.x/) |   |
 |          | [OpenZeppelin Contracts v4.x documentation](https://docs.openzeppelin.com/contracts/4.x/) |   |
 | Web3     | [Web3.js v1.5.2 documentation](https://web3js.readthedocs.io/en/v1.5.2/) |   |
+| Truffle  | [Truffle documentation](https://trufflesuite.com/docs/truffle/) |   |
+|          | [Truffle configuration](https://trufflesuite.com/docs/truffle/reference/configuration.html) |   |
+|          | [Truffle commands](https://trufflesuite.com/docs/truffle/reference/truffle-commands.html) |   |
+|          | [Truffle test in JavaScript](https://trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript.html) |   |
+|          | [Truffle Contract abstraction (`@truffle/contract`)](https://github.com/trufflesuite/truffle/tree/master/packages/contract) |   |
+| Solhint  | [Solhint Usage](https://github.com/protofire/solhint#usage) |   |
+|          | [Solhint Rules](https://github.com/protofire/solhint/blob/master/docs/rules.md) |  |
+
+### APIs
+
+| API          | Link | Remarks |
+| ------------ | ---- | ------- |
+| [bn.js](https://github.com/indutny/bn.js/) API | https://github.com/indutny/bn.js/#instructions |   |
+| [Chance](https://chancejs.com/) API | https://chancejs.com/ |   |
+| [Chai](https://www.chaijs.com/) Assert API | https://www.chaijs.com/api/assert/ |   |
+| [Chai](https://www.chaijs.com/) Expect/Shoud API | https://www.chaijs.com/api/bdd/ |   |
 
 ----
