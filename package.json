@@ -36,7 +36,8 @@
     "eth-lib": "0.2.8",
     "rlp": "~2.2.6",
     "secp256k1": "4.0.2",
-    "web3": "~1.5.1"
+    "web3": "~1.5.1",
+    "truffle-contract-size": "^2.0.1"
   },
   "engines": {
     "node": ">=12.0"
@@ -48,7 +49,7 @@
       "https://github.com/OpenZeppelin/zeppelin-solidity#getting-started"
     ],
     "preinstall": "",
-    "remixd" : "./scripts/remixd-start.sh",
-    "ganache" : "./scripts/ganache-cli-start.sh"
+    "remixd": "./scripts/remixd-start.sh",
+    "ganache": "./scripts/ganache-cli-start.sh"
   }
 }
