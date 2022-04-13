@@ -5,7 +5,13 @@ const bip39 = require("bip39"); // https://www.npmjs.com/package/bip39
 // https://github.com/ethereumjs/ethereumjs-wallet/tree/master/docs
 // https://github.com/ethereumjs/ethereumjs-monorepo/tree/master/packages/util/docs
 // https://dev.to/dongri/ethereum-wallet-sample-code-10o2
-const mnemonic = process.env.BIP39_MNEMONIC;
+let env = (process.argv.length < 3) ? 'BIP39_MNEMONIC' : process.argv[2]
+console.log(env);
+if(!process.env[env]){
+  console.error(`No valild mnemonic at the specified environment variable : ${env}, ${process.env[env]}`);
+  process.exit(401);
+}
+const mnemonic = process.env[env];
 const rootKey = hdkey.fromMasterSeed(bip39.mnemonicToSeedSync(mnemonic));
 const parentKey = rootKey.derivePath("m/44'/60'/0'/0");
 

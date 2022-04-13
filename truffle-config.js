@@ -190,7 +190,7 @@ module.exports = {
 
   // Configure your compilers
   // https://www.trufflesuite.com/docs/truffle/reference/configuration#compiler-configuration
-  // https://solidity.readthedocs.io/en/v0.6.6/using-the-compiler.html#target-options
+  // https://docs.soliditylang.org/en/v0.8.13/using-the-compiler.html
   compilers: {
     solc: {
       version: "pragma",  // https://github.com/trufflesuite/truffle/releases/tag/v5.2.0
@@ -199,8 +199,8 @@ module.exports = {
         optimizer: {
           enabled: false,
           runs: 200
-        },
-        evmVersion: "istanbul"  // berlin, istanbul, petersburg, constantinople, byzantium
+        }
+        //evmVersion: "london"  // london, berlin, istanbul, petersburg, constantinople, byzantium
       }
     },
   },
@@ -209,24 +209,4 @@ module.exports = {
     'truffle-contract-size'
   ]
 
-  // Truffle DB is currently disabled by default; to enable it, change enabled:
-  // false to enabled: true. The default storage location can also be
-  // overridden by specifying the adapter settings, as shown in the commented code below.
-  //
-  // NOTE: It is not possible to migrate your contracts to truffle DB and you should
-  // make a backup of your artifacts to a safe location before enabling this feature.
-  //
-  // After you backed up your artifacts you can utilize db by running migrate as follows:
-  // $ truffle migrate --reset --compile-all
-  //
-  // db: {
-    // enabled: false,
-    // host: "127.0.0.1",
-    // adapter: {
-    //   name: "sqlite",
-    //   settings: {
-    //     directory: ".db"
-    //   }
-    // }
-  // }
 };

@@ -50,6 +50,7 @@
     ],
     "preinstall": "",
     "remixd": "./scripts/remixd-start.sh",
-    "ganache": "./scripts/ganache-cli-start.sh"
+    "ganache": "./scripts/ganache-cli-start.sh",
+    "print-test-keypairs": "node ./scripts/print-test-keyparis.js"
   }
 }
