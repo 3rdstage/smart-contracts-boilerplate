@@ -20,8 +20,17 @@
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 	</natures>
 	<filteredResources>
+    <filter>
+      <id>1650463077455</id>
+      <name></name>
+      <type>26</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-projectRelativePath-matches-false-true-node_modules/(?!.*openzeppelin).*</arguments>
+      </matcher>
+    </filter>
 		<filter>
-			<id>1647484210729</id>
+			<id>1650463077438</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -30,7 +39,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1647484210731</id>
+			<id>1650463077440</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -38,8 +47,17 @@
 				<arguments>1.0-projectRelativePath-matches-false-true-.*__pycache__</arguments>
 			</matcher>
 		</filter>
+    <filter>
+      <id>1650463077458</id>
+      <name></name>
+      <type>26</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-projectRelativePath-matches-false-false-.pytest_cache</arguments>
+      </matcher>
+    </filter>
 		<filter>
-			<id>1647484210732</id>
+			<id>1650463077443</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -48,7 +66,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1647484210734</id>
+			<id>1650463077449</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -57,21 +75,12 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1647484210736</id>
+			<id>1650463077452</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
 				<arguments>1.0-projectRelativePath-matches-false-false-run/besu/data</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1647484210737</id>
-			<name></name>
-			<type>26</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-projectRelativePath-matches-false-true-node_modules/(?!.*openzeppelin).*</arguments>
 			</matcher>
 		</filter>
 	</filteredResources>
