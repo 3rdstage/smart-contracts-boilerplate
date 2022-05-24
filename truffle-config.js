@@ -52,7 +52,7 @@ module.exports = {
       port: 9545,
       network_id: "*"
     },
-    
+
     development: {
       host: ganache.host,
       port: ganache.port,
@@ -60,14 +60,16 @@ module.exports = {
       gas: 3E8,
       gasPrice: 0,
       websockets: ganache.websocket,
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
-    
+
     mainnet: {
       provider: () => new HDWalletProvider(
         mnemonic, "https://mainnet.infura.io/v3/" + process.env.INFURA_PROJECT_ID),
       network_id: '1',
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
 
     //Ropsten : PoW
@@ -80,7 +82,8 @@ module.exports = {
       network_id: '3',
       gas: 7E6,
       gasPrice: 1E10,
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
 
     //Rinkeby : PoA
@@ -97,7 +100,8 @@ module.exports = {
           pollingInterval: 5500
         }),
       network_id: '4',
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
 
     rinkeby_ws: {
@@ -115,7 +119,8 @@ module.exports = {
       },
       network_id: '4', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
       websockets: true,
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
 
     //Kovan : PoA
@@ -134,7 +139,8 @@ module.exports = {
       network_id: '42', //https://github.com/ethereum/wiki/wiki/JSON-RPC#net_version
       //gas: 7E6,
       //gasPrice: 5E10,
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
 
     kovan_ws: {
@@ -154,9 +160,10 @@ module.exports = {
       //gas: 7E6,
       //gasPrice: 5E10,
       websockets: true,
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     },
-    
+
     // Goerli : PoA
     // GitHub : https://github.com/goerli/testnet
     // Explorer : https://goerli.etherscan.io/
@@ -170,7 +177,8 @@ module.exports = {
         pollingInterval: 15000
       }),
       network_id: '5',
-      skipDryRun: true
+      skipDryRun: true,
+      disableConfirmationListener: true
     }
   },
 
@@ -204,7 +212,7 @@ module.exports = {
       }
     },
   },
-  
+
   plugins: [
     'truffle-contract-size'
   ]
