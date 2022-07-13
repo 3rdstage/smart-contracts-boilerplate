@@ -179,7 +179,35 @@ module.exports = {
       network_id: '5',
       skipDryRun: true,
       disableConfirmationListener: true
+    },
+    
+    // Polygon Testnet Mumbai
+    // https://github.com/ethereum-lists/chains/blob/master/_data/chains/eip155-80001.json
+    // https://mumbai.polygonscan.com/
+    mumbai: {
+      provider: () => new HDWalletProvider({
+        mnemonic: mnemonic,
+        providerOrUrl: new Web3HttpProvider('https://rpc-mumbai.maticvigil.com', defaultHttpOptions)
+      }),
+      network_id: '80001',
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      disableConfirmationListener: true
+    },
+    
+    // Polygon Mainnet
+    // https://github.com/ethereum-lists/chains/blob/master/_data/chains/eip155-137.json
+    // https://polygonscan.com
+    polygon: {
+      provider: () => new Web3HttpProvider('https://polygon-rpc.com/', defaultHttpOptions),
+      network_id: '137',
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      disableConfirmationListener: true
     }
+    
   },
 
   // Set default mocha options here, use special reporters etc.
