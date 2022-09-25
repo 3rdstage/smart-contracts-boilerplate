@@ -1,0 +1,15 @@
+{
+  "exclude_dependencies" : true,
+  "exclude_optimization" : false,
+  "exclude_informational": false,
+  "exclude_low": false,
+  "exclude_medium": false,
+  "exclude_high": false,
+  "detectors_to_exclude": "solc-version",
+  "solc_disable_warnings": true,
+  "compile_force_framework": "None",
+  "ignore_compile": true,
+  "truffle_ignore_compile": true,
+  "truffle_build_directory": "build",
+  "filter_paths": "node_modules/@openzeppelin"
+}
