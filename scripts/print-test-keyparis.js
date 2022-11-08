@@ -2,10 +2,11 @@ const { hdkey } = require('ethereumjs-wallet'); // https://www.npmjs.com/package
 const { BN } = require('ethereumjs-util'); // https://www.npmjs.com/package/ethereumjs-util
 const bip39 = require("bip39"); // https://www.npmjs.com/package/bip39
 
+// https://github.com/ethereumjs/ethereumjs-wallet#wallet-api
 // https://github.com/ethereumjs/ethereumjs-wallet/tree/master/docs
 // https://github.com/ethereumjs/ethereumjs-monorepo/tree/master/packages/util/docs
 // https://dev.to/dongri/ethereum-wallet-sample-code-10o2
-let env = (process.argv.length < 3) ? 'BIP39_MNEMONIC' : process.argv[2]
+let env = (process.argv.length < 3) ? 'BIP39_MNEMONIC' : process.argv[2];
 console.log(env);
 if(!process.env[env]){
   console.error(`No valild mnemonic at the specified environment variable : ${env}, ${process.env[env]}`);
