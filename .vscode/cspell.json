@@ -1,0 +1,68 @@
+// https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+// https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker#customization
+// https://github.com/streetsidesoftware/vscode-spell-checker
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "addr", // General abbreviation
+    "addrs",
+    "cntr",
+    "cntrs",
+    "contr",
+    "contrs",
+    "fctr", // factory
+    "spcl", // special
+    "mintee",
+    "mintees",
+    "importee",
+    "rslt",
+    "testcases",
+    "preinstall",
+    "addn", // `bn.js`
+    "subn",
+    "pickone", // `chance.js`
+    "pickset",
+    "keccak", // Blockchain
+    "secp256k1",
+    "hdwallet",
+    "mainnet", // Ethereum
+    "testnet",
+    "chainid",
+    "IERC",
+    "remixd",
+    "typechain",
+    "struct", // Solidity
+    "structs",
+    "inheritdoc",
+    "pausable",
+    "websocket", // Technology general
+    "solhint",
+    "ipfs",
+    "skcc", // misc
+    "chainz",
+    "frozens",
+    "unfreezed",
+    "exportings",
+    "unexporting",
+    "privilegeds",
+    "Sangmoon"
+  ],
+  "flagWords": [
+    "hte"
+  ],
+  "ignorePaths": ["./.jshintrc"],
+  "patterns": [
+    { "name" : "ipfs-url", "pattern": "/(?:ipfs|http|https)://.*Qm[0-9A-Za-z]*/"}
+  ],
+  "ignoreRegExpList": ["ipfs-url"],
+  "languageSettings": [
+    {
+      "languageId": "python",
+      "allowCompoundWords": true,
+      "dictionaries": [
+        "python"
+      ]
+    }
+  ]
+}
