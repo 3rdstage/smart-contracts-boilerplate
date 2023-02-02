@@ -26,18 +26,20 @@
     "keccak", // Blockchain
     "secp256k1",
     "hdwallet",
+    "keypair",
     "mainnet", // Ethereum
     "testnet",
     "chainid",
     "IERC",
     "remixd",
     "typechain",
+    "solhint",
+    "mythril",
     "struct", // Solidity
     "structs",
     "inheritdoc",
     "pausable",
     "websocket", // Technology general
-    "solhint",
     "ipfs",
     "skcc", // misc
     "chainz",
