@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+    "target": "es2018",
+    "module": "CommonJS",
+    "lib": ["ES2018"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "typeRoots": ["node_modules/@types", "./types"],
+    "types": ["node", "chai", "mocha", "chance", "truffle-contracts"]
+  },
+  "include": ["types/**/*.ts", "migrations/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "build", "cache", "artifacts"]
+}
