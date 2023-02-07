@@ -30,7 +30,13 @@
     "mainnet", // Ethereum
     "testnet",
     "chainid",
+    "ropsten",
+    "rinkeby",
+    "kovan",
+    "goerli",
     "IERC",
+    "ganache",
+    "remix",
     "remixd",
     "typechain",
     "solhint",

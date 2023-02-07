@@ -56,7 +56,7 @@
   },
   "scripts": {
     "//": [
-      "Recommanded Truffle version is 5.3.14 and not more.",
+      "Recommended Truffle version is 5.3.14 and not more.",
       "https://docs.npmjs.com/files/package.json",
       "https://github.com/OpenZeppelin/zeppelin-solidity#getting-started"
     ],
@@ -73,6 +73,6 @@
     "print-test-keypairs": "node ./scripts/print-test-keypairs.js",
     "slither": "find -E contracts -regex '.*\\.sol' -exec slither {} \\;",
     "solhint": "solhint -f table contracts/**/*.sol",
-    "mythril": "find -E contracts -regex '.*\\.sol' -and -not -regex '.*(I|Abstract)[^/]*\\.sol' -exec myth -v 4 analyze --execution-timeout 120 {} \\;"
+    "mythril": "find -E contracts -regex '.*\\.sol' -a ! -regex '.*(I|Abstract)[^/]*\\.sol' -exec myth -v 4 analyze --execution-timeout 120 {} \\;"
   }
 }
