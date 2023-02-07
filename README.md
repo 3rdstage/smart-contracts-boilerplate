@@ -40,10 +40,10 @@ To use this project, you may need to provide BIP39 mnemonic and Infura project I
 
 
 * `BIP39_MNEMONIC`
-    * Required for local Ganache (`scripts/ganacle-cli-start.sh`) and most of networks defined in Truffle configuration (`truffle-config.js`).
+    * Required for local Ganache (`scripts/ganache-cli-start.sh`) and most of networks defined in Truffle configuration (`truffle-config.js`).
     * To generate a new one, refer https://iancoleman.io/bip39/
 * `INFURA_PROJECT_ID`
-    * Required only for Ethereum testnets (Rinkeyby, Kovan, Ropsten) via Truffle
+    * Required only for Ethereum testnets (Rinkeby, Kovan, Ropsten) via Truffle
     * If you don't have any one, sign up for [Infura](https://infura.io/) and refer the following.
         * [Getting Started With Infura](https://blog.infura.io/getting-started-with-infura-28e41844cc89/)
 
@@ -61,7 +61,7 @@ $ npm view truffle version
 # install 'Truffle' if not installed yet or installed one is too old
 $ npm install -g truffle
 
-# check whether 'Ganache CLI' is intalled or not
+# check whether 'Ganache CLI' is installed or not
 $ npm ls -g --depth 0 | grep ganache-cli
 
 # check latest version of 'Ganache CLI'
@@ -70,7 +70,7 @@ $ npm view ganache-cli version
 # install 'Ganache CLI' if not installed yet or installed one is too old
 $ npm install -g ganache-cli
 
-# check whether 'remixd' is intalled or not
+# check whether 'remixd' is installed or not
 $ npm ls -g --depth 0 | grep remixd
 
 # check latest version of 'remixd'
@@ -95,12 +95,12 @@ $ npm
 ## Using Ganache CLI
 
 Ganache CLI is one of the most mandatory tool to test your smart contracts quickly.
-The boilerplate project contains a script to start Ganach CLI in more better way.
+The boilerplate project contains a script to start Ganache CLI in more better way.
 
-To start Ganache CLI, run `scipts/ganache-cli-start.sh` from the project directory
-It will print out some properties and full command line starting with `ganche-cli --networks...`
+To start Ganache CLI, run `scripts/ganache-cli-start.sh` from the project directory
+It will print out some properties and full command line starting with `ganache-cli --networks...`
 
-If you are using Microsoft Windows, Git Bash included in [Git for Windows](https://git-scm.com/download/win) is recommanded to run shell script.
+If you are using Microsoft Windows, Git Bash included in [Git for Windows](https://git-scm.com/download/win) is recommended to run shell script.
 
 ~~~bash
 
@@ -121,16 +121,16 @@ To stop the Ganache CLI, type `Ctrl` + `C`.
 
 The script will create and unlock 10 test accounts from the specified mnemonic (via `BIP39_MNEMONIC` environment variable).
 The accounts would not change if the mnemonic is not changed.
-You can print out key-pairs and addresses for the test accounts using `script/print-test-keyparis.js` file.
+You can print out key-pairs and addresses for the test accounts using `script/print-test-keypairs.js` file.
 The following command line would show key-pairs and addresses in JSON format.
 
 ~~~bash
 
-$ node scripts/print-test-keyparis.jsnode
+$ node scripts/print-test-keypairs.js
 
 ~~~
 
-Initally, test accounts are given 10,000 ETH
+Initially, test accounts are given 10,000 ETH
 
 Data files and log file of the Ganache CLI are located under `run/ganache` directory.
 Directories would be created when `scripts/ganache-cli-start.sh` is run for the first time.
@@ -141,7 +141,7 @@ Directories would be created when `scripts/ganache-cli-start.sh` is run for the 
 | Ganache CLI Log  | `run/ganache/ganache.log` |   |
 
 
-Runing `scripts/ganache-cli-start.sh` without any argument will reuse data in previous run.
+Running `scripts/ganache-cli-start.sh` without any argument will reuse data in previous run.
 So account balances and smart contracts in previous run will be remain.
 If you want to launch Ganache CLI from the genesis, run `scripts/ganache-cli-start.sh` with `-r` or `--refresh` option.
 This option will remove all the data under `run/ganache/data/` directory.
@@ -239,7 +239,7 @@ $
 
 ## Code Style
 
-Contract sources are recommanded to follow "OpenZeppelin Contracts Design Guidelines" extending official Solidity style guides.
+Contract sources are recommended to follow "OpenZeppelin Contracts Design Guidelines" extending official Solidity style guides.
 
 * [OpenZeppelin Contracts Design Guidelines](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/GUIDELINES.md)
 * [Solidity Style Guide](https://docs.soliditylang.org/en/v0.8.10/style-guide.html)
@@ -269,6 +269,6 @@ Contract sources are recommanded to follow "OpenZeppelin Contracts Design Guidel
 | [bn.js](https://github.com/indutny/bn.js/) API | https://github.com/indutny/bn.js/#instructions |   |
 | [Chance](https://chancejs.com/) API | https://chancejs.com/ |   |
 | [Chai](https://www.chaijs.com/) Assert API | https://www.chaijs.com/api/assert/ |   |
-| [Chai](https://www.chaijs.com/) Expect/Shoud API | https://www.chaijs.com/api/bdd/ |   |
+| [Chai](https://www.chaijs.com/) Expect/Should API | https://www.chaijs.com/api/bdd/ |   |
 
 ----
