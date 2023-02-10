@@ -37,6 +37,10 @@
     "run/besu/data/**": true
   },
 
+  "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+  "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+  "js/ts.implicitProjectConfig.checkJs": false,
+
   "jshint.enable" : true,
   "jshint.config": ".jshintrc",
 
@@ -44,8 +48,5 @@
     "solidity"
   ],
 
-  "solidity-va.codelens.inheritance.enable": true,
-
-  "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
-  "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false
+  "solidity-va.codelens.inheritance.enable": true
 }

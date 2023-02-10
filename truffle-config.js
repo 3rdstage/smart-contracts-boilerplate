@@ -1,3 +1,5 @@
+// cspell:words websockets solcjs
+
 // https://github.com/trufflesuite/truffle/tree/v5.1.5/packages/hdwallet-provider
 // https://web3js.readthedocs.io/en/v1.3.0/web3.html#providers
 // https://iancoleman.io/bip39/
@@ -14,12 +16,12 @@ const ganache = {
   port : config.match(/ethereum.port=[0-9]*/g)[0].substring(14),
   chain : config.match(/ethereum.chainId=[0-9]*/g)[0].substring(17),
   websocket: false
-}
+};
 
 // https://www.npmjs.com/package/web3-providers-http
 const defaultHttpOptions = {
   keepAlive: true, timeout: 70000
-}
+};
 
 // https://www.npmjs.com/package/web3-providers-ws
 // https://github.com/theturtle32/WebSocket-Node/blob/v1.0.31/docs/WebSocketClient.md#client-config-options
@@ -35,7 +37,7 @@ const defaultWsOptions = {
   },
 
   reconnect: { auto: true, delay: 5000, maxAttempts: 5, onTimeout: false }
-}
+};
 
 module.exports = {
 
@@ -180,7 +182,7 @@ module.exports = {
       skipDryRun: true,
       disableConfirmationListener: true
     },
-    
+
     // Polygon Testnet Mumbai
     // https://github.com/ethereum-lists/chains/blob/master/_data/chains/eip155-80001.json
     // https://mumbai.polygonscan.com/
@@ -195,7 +197,7 @@ module.exports = {
       skipDryRun: true,
       disableConfirmationListener: true
     },
-    
+
     // Polygon Mainnet
     // https://github.com/ethereum-lists/chains/blob/master/_data/chains/eip155-137.json
     // https://polygonscan.com
@@ -207,7 +209,7 @@ module.exports = {
       skipDryRun: true,
       disableConfirmationListener: true
     }
-    
+
   },
 
   // Set default mocha options here, use special reporters etc.
