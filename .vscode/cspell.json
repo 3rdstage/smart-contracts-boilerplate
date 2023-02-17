@@ -43,6 +43,7 @@
     "mythril",
     "struct", // Solidity
     "structs",
+    "bytecode",
     "inheritdoc",
     "pausable",
     "websocket", // Technology general

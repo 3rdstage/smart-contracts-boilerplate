@@ -1,5 +1,6 @@
 {
-    "compilerOptions": {
+  /* slint:disable */
+  "compilerOptions": {
     "target": "es2018",
     "module": "CommonJS",
     "lib": ["ES2018"],
@@ -11,9 +12,12 @@
     "esModuleInterop": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
+    // slint-disable-next-line
     "typeRoots": ["node_modules/@types", "./types"],
+    // slint-disable-next-line
     "types": ["node", "chai", "mocha", "chance", "truffle-contracts"]
   },
+  // slint-disable-next-line
   "include": ["types/**/*.ts", "migrations/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules", "build", "cache", "artifacts"]
 }

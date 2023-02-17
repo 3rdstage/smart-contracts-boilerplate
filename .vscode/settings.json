@@ -43,6 +43,7 @@
 
   "jshint.enable" : true,
   "jshint.config": ".jshintrc",
+  //"tslint.exclude": "tsconfig.json",
 
   "cSpell.enableFiletypes": [
     "solidity"
