@@ -1,3 +1,10 @@
 {
-  // "ignorePatterns": ["tsconfig.json"]
+  "ignores": ["./tsconfig.json"],
+  "parserOptions": {
+      "ecmaVersion": "latest"
+  },
+
+  "env": {
+      "es2017": true
+  }
 }

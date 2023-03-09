@@ -46,6 +46,7 @@
     "bytecode",
     "inheritdoc",
     "pausable",
+    "mload",
     "websocket", // Technology general
     "ipfs",
     "skcc", // misc
