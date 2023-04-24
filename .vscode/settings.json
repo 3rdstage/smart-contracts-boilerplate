@@ -43,11 +43,14 @@
 
   "jshint.enable" : true,
   "jshint.config": ".jshintrc",
-  //"tslint.exclude": "tsconfig.json",
+  "tslint.enable": false,
+  "tslint.exclude": "tsconfig.json",
+  "eslint.enable": false,
 
-  "cSpell.enableFiletypes": [
-    "solidity"
-  ],
+  "solidity-va.codelens.inheritance.enable": true,
 
-  "solidity-va.codelens.inheritance.enable": true
+  "plantuml.fileExtensions": ".pu,.puml,.plantuml",
+  "plantuml.exportSubFolder": false,
+  "plantuml.exportOutDir": "."
+
 }
