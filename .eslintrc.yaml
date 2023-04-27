@@ -1,0 +1,13 @@
+# https://eslint.org/docs/latest/use/configure/
+# https://eslint.org/docs/latest/use/configure/configuration-files
+# https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+env:
+  es2020: true  # version 11
+
+parserOptions:
+  ecmaVersion: latest
+
+ignores:
+  - './jsconfig.json'
+
