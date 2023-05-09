@@ -90,20 +90,22 @@ fi
 
 cd "${script_dir}"
 
-readonly eth_chain_id=`cat ganache-cli.properties | grep -E "^ethereum\.chainId=" | sed -E 's/ethereum\.chainId=//'`
-readonly eth_host=`cat ganache-cli.properties | grep -E "^ethereum\.host=" | sed -E 's/ethereum\.host=//'`
-readonly eth_port=`cat ganache-cli.properties | grep -E "^ethereum\.port=" | sed -E 's/ethereum\.port=//'`
-readonly eth_gas_price=`cat ganache-cli.properties | grep -E "^ethereum\.gasPrice=" | sed -E 's/ethereum\.gasPrice=//'`
-readonly eth_gas_limit=`cat ganache-cli.properties | grep -E "^ethereum\.gasLimit=" | sed -E 's/ethereum\.gasLimit=//'`
-readonly eth_block_time=`cat ganache-cli.properties | grep -E "^ethereum\.blockTime=" | sed -E 's/ethereum\.blockTime=//'`
-readonly eth_hardfork=`cat ganache-cli.properties | grep -E "^ethereum\.hardfork" | sed -E 's/ethereum\.hardfork=//'`
+readonly eth_chain_id=`cat ganache.properties | grep -E "^ethereum\.chainId=" | sed -E 's/ethereum\.chainId=//'`
+readonly eth_host=`cat ganache.properties | grep -E "^ethereum\.host=" | sed -E 's/ethereum\.host=//'`
+readonly eth_port=`cat ganache.properties | grep -E "^ethereum\.port=" | sed -E 's/ethereum\.port=//'`
+readonly eth_gas_price=`cat ganache.properties | grep -E "^ethereum\.gasPrice=" | sed -E 's/ethereum\.gasPrice=//'`
+readonly eth_gas_limit=`cat ganache.properties | grep -E "^ethereum\.gasLimit=" | sed -E 's/ethereum\.gasLimit=//'`
+readonly eth_block_time=`cat ganache.properties | grep -E "^ethereum\.blockTime=" | sed -E 's/ethereum\.blockTime=//'`
+readonly eth_hardfork=`cat ganache.properties | grep -E "^ethereum\.hardfork" | sed -E 's/ethereum\.hardfork=//'`
+
 
 if [ $verbose -ne 0 ]; then
-  echo "Chain ID: $eth_chain_id"
-  echo "Host Address: $eth_host"
-  echo "TCP Port: $eth_port"
-  echo "Gas Price: $eth_gas_price"
+  echo "Chain ID : $eth_chain_id"
+  echo "Client Host Address: $eth_host"
+  echo "Client TCP Port: $eth_port"
   echo "Gas Limit: $eth_gas_limit"
+  echo "Gas Price: $eth_gas_price"
+  echo "uname: $uname"
 fi
 
 case $uname in
@@ -128,8 +130,7 @@ Darwin*) #Bash on macOS
   exit 600
 esac
 
-# Ganache CLI : 
-#     https://github.com/trufflesuite/ganache-cli#using-ganache-cli
+# Ganache CLI : https://github.com/trufflesuite/ganache#documentation
 #     https://github.com/trufflesuite/ganache/tree/master#options
 # BIP 32 : https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
 # BIP 39 : https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
@@ -137,27 +138,27 @@ esac
 # Options
 #   - gasLimit : The block gas limit (defaults to 0x6691b7)
 #   - gasPrice: The price of gas in wei (defaults to 20000000000)
-cmd="ganache-cli --networkId $eth_chain_id \
-            --chainId $eth_chain_id \
-            --host '$eth_host' \
-            --port $eth_port \
-            --gasPrice $eth_gas_price \
-            --gasLimit $eth_gas_limit"
+
+cmd="npx ganache --chain.networkId $eth_chain_id \
+            --chain.chainId $eth_chain_id \
+            --chain.hardfork $eth_hardfork \
+            --server.host '$eth_host' \
+            --server.port $eth_port \
+            --miner.blockGasLimit $eth_gas_limit \
+            --miner.blockTime $eth_block_time"
 
 if [ -z "${!mnemonic_env_var_name}" ]; then
   echo "'${mnemonic_env_var_name}' env. variable is not defined, so implicit default mnemonic will be used."
   echo "If you want to use user defined mnemonic, define it via '${mnemonic_env_var_name}' env. variable and restart this script."
-  cmd="${cmd} --deterministic"
+  cmd="${cmd} --wallet.deterministic"
 else
   echo "'${mnemonic_env_var_name}' env. variable is defined, so it will be used."
-  cmd="${cmd} --mnemonic '${!mnemonic_env_var_name}'"
+  cmd="${cmd} --wallet.mnemonic '${!mnemonic_env_var_name}'"
 fi
 
-cmd="${cmd} --defaultBalanceEther 10000 --accounts 10 --secure \
-            --unlock 0 --unlock 1 --unlock 2 --unlock 3 --unlock 4 --unlock 5 --unlock 6 --unlock 7 --unlock 8 --unlock 9 \
-            --hardfork $eth_hardfork \
-            --blockTime $eth_block_time \
-            --db '${data_dir}' >> '${log_dir}'/ganache.log 2>&1"
+cmd="${cmd} --wallet.totalAccounts 10 --wallet.defaultBalance 10000 \
+            --wallet.lock -u 0 -u 1 -u 2 -u 3 -u 4 -u 5 -u 6 -u 7 -u 8 -u 9 \
+            --database.dbPath '${data_dir}' >> '${log_dir}'/ganache.log 2>&1"
 
 if [ "$uname" == "Linux" ]; then
   cmd="sudo sh -c \"$cmd\""
