@@ -10,7 +10,7 @@ const Web3WsProvider = require('web3-providers-ws');
 // Read properties for local standalone Ganache CLI node
 const mnemonic = process.env.BIP39_MNEMONIC;
 const fs = require('fs');
-const config = fs.readFileSync('scripts/ganache-cli.properties').toString();
+const config = fs.readFileSync('scripts/ganache.properties').toString();
 const ganache = {
   host : config.match(/ethereum.host=.*/g)[0].substring(14),
   port : config.match(/ethereum.port=[0-9]*/g)[0].substring(14),
@@ -40,6 +40,8 @@ const defaultWsOptions = {
 };
 
 module.exports = {
+
+  contracts_build_directory: "./build/truffle",  // default: ./build/contracts
 
   // https://www.trufflesuite.com/docs/truffle/reference/configuration#networks
   // https://github.com/trufflesuite/truffle/tree/develop/packages/hdwallet-provider#general-usage
