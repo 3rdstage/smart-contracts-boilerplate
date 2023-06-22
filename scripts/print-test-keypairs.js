@@ -9,7 +9,7 @@ const bip39 = require("bip39"); // https://www.npmjs.com/package/bip39
 let env = (process.argv.length < 3) ? 'BIP39_MNEMONIC' : process.argv[2];
 console.log(env);
 if(!process.env[env]){
-  console.error(`No valild mnemonic at the specified environment variable : ${env}, ${process.env[env]}`);
+  console.error(`No valid mnemonic at the specified environment variable : ${env}, ${process.env[env]}`);
   process.exit(401);
 }
 const mnemonic = process.env[env];
@@ -17,7 +17,7 @@ const rootKey = hdkey.fromMasterSeed(bip39.mnemonicToSeedSync(mnemonic));
 const parentKey = rootKey.derivePath("m/44'/60'/0'/0");
 
 const output = {};
-output.menomic = mnemonic;
+output.mnemonic = mnemonic;
 output.baseKey = parentKey.getWallet().getPrivateKeyString();
 output.keyPairs = [];
 for(let i = 0; i < 10; i++){
