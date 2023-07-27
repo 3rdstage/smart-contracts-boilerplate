@@ -13,20 +13,22 @@
     "contrs",
     "fctr", // factory
     "spcl", // special
+    "rslt", // result
     "mintee",
     "mintees",
     "importee",
-    "rslt",
+    "frozens",
+    "unfreezed",
+    "exportings",
+    "unexporting",
+    "privilegeds",
     "testcases",
     "preinstall",
-    "addn", // `bn.js`
-    "subn",
-    "pickone", // `chance.js`
-    "pickset",
     "keccak", // Blockchain
     "secp256k1",
     "hdwallet",
     "keypair",
+    "hardfork",
     "mainnet", // Ethereum
     "testnet",
     "chainid",
@@ -34,6 +36,7 @@
     "rinkeby",
     "kovan",
     "goerli",
+    "sepolia",
     "IERC",
     "ganache",
     "remix",
@@ -49,14 +52,11 @@
     "mload",
     "websocket", // Technology general
     "ipfs",
-    "skcc", // misc
-    "chainz",
-    "frozens",
-    "unfreezed",
-    "exportings",
-    "unexporting",
-    "privilegeds",
-    "Sangmoon"
+    "addn", // `bn.js`
+    "subn",
+    "pickone", // `chance.js`
+    "pickset",
+    "Sangmoon" // pronoun
   ],
   "flagWords": [
     "hte"

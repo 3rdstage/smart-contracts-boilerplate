@@ -1,6 +1,11 @@
-// cspell:ignore nomiclabs sepolia
+// cspell:ignore nomiclabs
+// cspell:word
 
-require("@nomiclabs/hardhat-ethers");
+// https://hardhat.org/hardhat-runner/docs/config
+// https://hardhat.org/hardhat-runner/docs/guides/typescript
+
+import {HardhatUserConfig} from "hardhat/config";
+import "@nomiclabs/hardhat-ethers";
 
 const fs = require('fs');
 const ganache = {};
@@ -21,11 +26,30 @@ const config: HardhatUserConfig = {
 
   // https://hardhat.org/hardhat-runner/docs/config#networks-configuration
   networks: {
-    hardhat: {},
+
+    defaultNetwork: "hardhat",
+
+    // https://hardhat.org/hardhat-network/docs/reference
+    hardhat: {
+      gas : 'auto',
+      gasPrice : 'auto',
+      gasMultiplier: 1.2,
+      accounts: {
+        mnemonic: mnemonic,
+        count: 12,
+        accountsBalance: "10000000000000000000000"
+      },
+      blockGasLimit: 30_000_000,
+      hardfork: "merge",
+      throwOnCallFailures: true,
+      allowUnlimitedContractSize: false
+    },
+
     sepolia: {
       url: "https://sepolia.infura.io/v3/",
       accounts: []
     },
+
     ganache: {
       url: `http://${ganache.host}:${ganache.port}`,
       //chainId: 3131,  // optional
