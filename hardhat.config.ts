@@ -4,12 +4,12 @@
 // https://hardhat.org/hardhat-runner/docs/config
 // https://hardhat.org/hardhat-runner/docs/guides/typescript
 
+import * as fs from 'fs';
 import {HardhatUserConfig} from "hardhat/config";
 import '@typechain/hardhat';
 import "@nomicfoundation/hardhat-ethers";
 import "@nomicfoundation/hardhat-chai-matchers";
 
-const fs = require('fs');
 const ganache = {};
 ganache.config = fs.readFileSync('scripts/ganache.properties').toString();
 ganache.chain = ganache.config.match(/ethereum.chainId=[0-9]*/g)[0].substring(17);
@@ -26,11 +26,10 @@ const config: HardhatUserConfig = {
     cache: "./temp/hardhat/cache"
   },
 
+  defaultNetwork: "hardhat",
+
   // https://hardhat.org/hardhat-runner/docs/config#networks-configuration
   networks: {
-
-    defaultNetwork: "hardhat",
-
     // https://hardhat.org/hardhat-network/docs/reference
     hardhat: {
       gas : 'auto',
@@ -42,7 +41,7 @@ const config: HardhatUserConfig = {
         accountsBalance: "10000000000000000000000"
       },
       blockGasLimit: 30_000_000,
-      hardfork: "merge",
+      //hardfork: "merge",
       throwOnCallFailures: true,
       allowUnlimitedContractSize: false
     },
