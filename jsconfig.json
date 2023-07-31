@@ -1,3 +1,5 @@
+/* tslint:disable */
+/* eslint-disable */
 {
   // https://www.typescriptlang.org/tsconfig
   // https://code.visualstudio.com/docs/languages/jsconfig
@@ -8,8 +10,10 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types", "./types"],
-    "types": ["node", "chai", "mocha", "chance", "truffle-contracts"],
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@nomicfoundation/hardhat-ethers/types"],
+    "types": ["node", "chai", "mocha", "chance"],
     "strict": true,
     "alwaysStrict": true,
     "noImplicitThis": true,
@@ -20,6 +24,12 @@
     "lib": ["ES2020"],
     "skipLibCheck": true
   },
-  "include": ["types/**/*.ts", "migrations/**/*.ts", "test/**/*.ts"],
-  "exclude": ["node_modules", "dist", "build", "cache", "artifacts"]
+  "include": [
+    "./migrations/**/*.ts",
+    "./test/**/*.ts",
+    "./types/hardhat",
+    "./types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist", "build", "cache", "artifacts"],
+  "files": ["./hardhat.config.ts"]
 }

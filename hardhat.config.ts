@@ -1,11 +1,13 @@
-// cspell:ignore nomiclabs
+// cspell:ignore nomicfoundation
 // cspell:word
 
 // https://hardhat.org/hardhat-runner/docs/config
 // https://hardhat.org/hardhat-runner/docs/guides/typescript
 
 import {HardhatUserConfig} from "hardhat/config";
-import "@nomiclabs/hardhat-ethers";
+import '@typechain/hardhat';
+import "@nomicfoundation/hardhat-ethers";
+import "@nomicfoundation/hardhat-chai-matchers";
 
 const fs = require('fs');
 const ganache = {};

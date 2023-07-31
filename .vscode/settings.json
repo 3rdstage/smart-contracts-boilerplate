@@ -37,16 +37,22 @@
     "run/besu/data/**": true
   },
 
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
   "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
   "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
   "js/ts.implicitProjectConfig.checkJs": false,
 
-  "jshint.enable" : true,
+  "jshint.enable" : false,
   "jshint.config": ".jshintrc",
   "tslint.enable": false,
-  "tslint.exclude": "tsconfig.json",
-  "eslint.enable": false,
+  "tslint.exclude": "jsconfig.json",
 
+  "eslint.enable": true,
+
+  "solidity.remappings": [
+    "@openzeppelin/=node_modules/@openzeppelin/"
+  ],
   "solidity-va.codelens.inheritance.enable": true,
 
   "plantuml.fileExtensions": ".pu,.puml,.plantuml",
