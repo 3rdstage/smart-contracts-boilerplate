@@ -13,7 +13,7 @@
     "typeRoots": [
       "node_modules/@types",
       "node_modules/@nomicfoundation/hardhat-ethers/types"],
-    "types": ["node", "chai", "mocha", "chance"],
+    "types": ["node", "bn.js", "chai", "mocha", "chance"],
     "strict": true,
     "alwaysStrict": true,
     "noImplicitThis": true,
@@ -25,10 +25,10 @@
     "skipLibCheck": true
   },
   "include": [
+    "types/hardhat/**/*",
+    "types/truffle-contracts/**/*",
     "./migrations/**/*.ts",
     "./test/**/*.ts",
-    "./types/hardhat",
-    "./types/**/*.ts"
   ],
   "exclude": ["node_modules", "dist", "build", "cache", "artifacts"],
   "files": ["./hardhat.config.ts"]
