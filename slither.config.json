@@ -11,5 +11,8 @@
   "ignore_compile": true,
   "truffle_ignore_compile": true,
   "truffle_build_directory": "build",
+  "hardhat_ignore_compile": true,
+  "hardhat_artifacts_directory": "build/hardhat",
+  "hardhat_cache_directory": "temp/hardhat/cache",
   "filter_paths": "node_modules/@openzeppelin"
 }
