@@ -1,0 +1,10 @@
+# https://cspell.org/docs/dictionaries-custom/
+
+# General abbreviations
+addr     # address
+addrs
+contr    # contract
+contrs
+descr    # description
+fctr     # factory
+rslt     # result

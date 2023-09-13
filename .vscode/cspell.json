@@ -5,58 +5,17 @@
   "version": "0.2",
   "language": "en",
   "words": [
-    "addr", // General abbreviation
-    "addrs",
-    "cntr",
-    "cntrs",
-    "contr",
-    "contrs",
-    "fctr", // factory
-    "spcl", // special
-    "rslt", // result
-    "mintee",
-    "mintees",
-    "importee",
-    "frozens",
-    "unfreezed",
-    "exportings",
-    "unexporting",
-    "privilegeds",
-    "testcases",
-    "preinstall",
-    "keccak", // Blockchain
-    "secp256k1",
-    "hdwallet",
-    "keypair",
-    "hardfork",
-    "mainnet", // Ethereum
-    "testnet",
-    "chainid",
-    "ropsten",
-    "rinkeby",
-    "kovan",
-    "goerli",
-    "sepolia",
-    "IERC",
-    "ganache",
-    "remix",
-    "remixd",
-    "typechain",
-    "solhint",
-    "mythril",
-    "struct", // Solidity
-    "structs",
-    "bytecode",
-    "inheritdoc",
-    "pausable",
-    "mload",
-    "websocket", // Technology general
-    "ipfs",
+    "consolas", // Fonts
+    "lucida",
+    "menlo",
+    "webp", // Extensions
+    "websocket", // Techonology Geneal
+    "reentrancy",
+    "emscripten", // https://emscripten.org/
     "addn", // `bn.js`
     "subn",
     "pickone", // `chance.js`
-    "pickset",
-    "Sangmoon" // pronoun
+    "pickset"
   ],
   "flagWords": [
     "hte"
@@ -85,5 +44,14 @@
       "words": [
         "esversion", "forin", "latedef", "nofunc", "noarg", "nonew", "quotmark"]
     }
+  ],
+  "dictionaries": ["abbrev", "software", "hardware", "asciidoc", "web3"],
+  "dictionaryDefinitions": [
+    { "name": "abbrev", "path": "./cspell/abbrev.txt", "addWords": true },
+    { "name": "software", "path": "./cspell/software.txt", "addWords": true },
+    { "name": "hardware", "path": "./cspell/hardware.txt", "addWords": true },
+    { "name": "asciidoc", "path": "./cspell/asciidoc.txt", "addWords": true },
+    { "name": "web3", "path": "./cspell/web3.txt", "addWords": true }
   ]
+
 }
