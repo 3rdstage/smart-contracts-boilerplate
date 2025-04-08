@@ -1,0 +1,41 @@
+# https://cspell.org/docs/dictionaries-custom/
+
+# Blockchain
+bitcoin
+ethereum
+solana
+hyperledger
+besu
+ipfs
+interchain
+typechain
+
+# Ethereum
+keccak
+secp256k1
+yellowpaper
+erc
+ierc
+soulbound
+chainid
+ropsten
+rinkeby
+kovan
+goerli
+vyper
+consensys
+openzeppelin
+remix
+remixd
+ganache
+solhint
+mythril
+mythx
+
+# Solidity
+struct
+structs
+bytecode
+inheritdoc
+pausable
+mload

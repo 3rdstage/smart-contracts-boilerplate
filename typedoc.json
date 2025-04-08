@@ -1,5 +1,8 @@
 {
-  "entryPoints": ["./types/truffle-contracts/index.d.ts", "./types/truffle-contracts/types.d.ts"],
+  "entryPoints": [
+    "./types/truffle-contracts/index.d.ts",
+    "./types/truffle-contracts/types.d.ts"
+  ],
   "out": "docs/types",
   "readme": "none"
 }

@@ -1,0 +1,36 @@
+
+= Read Me 1st
+:toc:
+:sectnums:
+:imagesdir: ./
+:icons: font
+
+== Logos
+
+[cols="6+,^,^,^,^,^,^", frame=ends, width='80%']
+|===
+| Hardhat |   |   |    |   |
+
+| image:https://cdn.svgporn.com/logos/hardhat-icon.svg[Hardhat,100,link='https://hardhat.org/',window='_blank']
+|
+|
+|
+|
+|
+
+|===
+
+== Foundry Support
+
+* Setup Foundry
+** https://github.com/foundry-rs/foundry/tree/master/foundryup[`foundryup`]
+** https://book.getfoundry.sh/config/[Configuration with `foundry.toml`]
+** https://book.getfoundry.sh/reference/config/[Config Reference]
+** https://github.com/foundry-rs/forge-std/tree/master[Forge Standard Library]
+*** ``forge install foundry-rs/forge-std``
+** Library for Foundry with Hardhat
+*** ``forge install rari-capital/solmate``
+
+* Using Foundry
+** https://book.getfoundry.sh/reference/forge/[`forge` command]
+

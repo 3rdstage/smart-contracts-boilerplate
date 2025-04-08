@@ -1,13 +1,28 @@
 # https://eslint.org/docs/latest/use/configure/
 # https://eslint.org/docs/latest/use/configure/configuration-files
 # https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+# https://typescript-eslint.io/getting-started/
 
-env:
-  es2020: true  # version 11
+root: true
+
+extends:
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/recommended'
+
+plugins:
+  - '@typescript-eslint'
+
+parser: '@typescript-eslint/parser'
 
 parserOptions:
-  ecmaVersion: latest
+  ecmaVersion: 'latest'
+  sourceType: 'module'
 
-ignores:
-  - './jsconfig.json'
+env:
+  es2018: true  # version 9
+  es2020: true  # version 11
 
+globals:
+  artifacts: readonly
+
+# ignorePatterns:
