@@ -61,9 +61,7 @@
   "flagWords": [
     "hte"
   ],
-  "enableFiletypes": [
-    "solidity"
-  ],
+  "enableFiletypes": [ "solidity", "javascript", "typescript", "json", "sh", "asciidoc" ],
   "ignorePaths": [ ],
   "patterns": [
     { "name" : "ipfs-url", "pattern": "/(?:ipfs|http|https)://.*Qm[0-9A-Za-z]*/"}
